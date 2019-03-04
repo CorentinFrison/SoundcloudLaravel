@@ -2,6 +2,11 @@
 
 @section('content')
 
+    @guest
+    <h3>Page de : {{$utilisateur->name}}</h3>
+        Il suit {{$utilisateur->jeLesSuit->count()}} personne(s)<br/>
+        Suivi par {{$utilisateur->ilsMeSuivent->count()}} personne(s)
+    @endguest
 
     @auth
         @if(Auth::id() != $utilisateur->id)
@@ -18,7 +23,7 @@
         Je suis {{$utilisateur->jeLesSuit->count()}} personne(s)<br/>
         Je suis suivi par {{$utilisateur->ilsMeSuivent->count()}} personne(s)<br/>
         @endif
-@endauth
+    @endauth
 
 <br>
 

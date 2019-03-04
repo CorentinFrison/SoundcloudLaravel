@@ -24,6 +24,7 @@
             <li><a href="{{ route('register') }}">Register</a></li>
         @else
             <li>Bonjour <a href="/utilisateur/{{ Auth::user()->id }}"> {{ Auth::user()->name }}</a></li>
+            <li><a href="/nouvelle">Inserer une chanson</li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -36,9 +37,16 @@
     </ul>
 </nav>
 
+<form id="search">
+<input type="text" name="search" placeholder="Rechercher" required/>
+<input type="submit">
+</form>
+
 <audio id="audio" controls>
     <source src="">
 </audio>
+
+
 
 <div id="main">
     @yield('content')
