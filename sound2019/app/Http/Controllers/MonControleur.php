@@ -56,4 +56,8 @@ class MonControleur extends Controller
        return view("recherche",['utilisateurs'=>$users, 'chansons'=>$chansons]);
     }
 
+    public function testajax(){
+        return redirect('/recherche/ut');
+    }
+
 }
