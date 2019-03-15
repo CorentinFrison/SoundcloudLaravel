@@ -26,10 +26,10 @@ class MonControleur extends Controller
     public function suivre($id){
         $utilisateur = User::find($id);
         if($utilisateur == false){
-            return abort(404);
+            return redirect("/")->with('toastr',['statut'=>'error','message'=>'Erreur']);;
         }
         $utilisateur->ilsMeSuivent()->toggle(Auth::id());
-        return back();
+        return back()->with('toastr',['statut'=>'success','message'=>'Changement de suivi']);
     }
 
     public function nouvelle(){
