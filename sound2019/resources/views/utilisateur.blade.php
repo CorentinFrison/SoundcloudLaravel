@@ -14,9 +14,9 @@
         Il suit {{$utilisateur->jeLesSuit->count()}} personne(s)<br/>
         Suivi par {{$utilisateur->ilsMeSuivent->count()}} personne(s)<br/>
             @if($utilisateur->ilsMeSuivent->contains(Auth::id()))
-                <a href="/suivre/{{$utilisateur->id}}">Arreter de suivre</a>
+                <a href="/suivre/{{$utilisateur->id}}" data-pjax >Arreter de suivre</a>
             @else
-                <a href="/suivre/{{$utilisateur->id}}">Suivre</a>
+                <a href="/suivre/{{$utilisateur->id}}" data-pjax >Suivre</a>
             @endif
         @else
         <h3>Ma page</h3>

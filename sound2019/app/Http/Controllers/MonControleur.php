@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Chanson;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class MonControleur extends Controller
@@ -37,17 +38,41 @@ class MonControleur extends Controller
     }
 
     public function creer(Request $request){
-        if($request->hasFile('chanson') && $request->file('chanson')->isValid()){
+        /*
+        $validateData = $request->validate([
+            'nom' =>'required|min:4'
+        ]);
+            */
+
+
+            $validator=Validator::make($request->all(),[
+                'nom' =>'required|min:4'
+            ]);
+
+            if ($validator->fails()){
+                return redirect('/nouvelle')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('toastr',['statut'=>'error','message'=>'Formulaire Incomplet']);
+
+            }
+
+
+        if($request->hasFile('chanson') && $request->file('chanson')->isValid() && $request->file('chanson')->isValid()){
             $c=new Chanson();
             $c->nom = $request->input('nom');
             $c->style = $request->input("style");
             $c->utilisateur_id=Auth::id();
+            $c->img = $request->input('img');
 
             $c->fichier=$request->file('chanson')->store("public/audio/".Auth::id());
             $c->fichier=str_replace("public/","/storage/", $c->fichier);
+
+            $c->img=$request->file('img')->store("public/image/".Auth::id());
+            $c->img=str_replace("public/","/storage/", $c->img);
             $c->save();
         }
-        return redirect("/")->with('toastr',['statut'=>'success','message'=>'Chanson uploadé']);;
+        return redirect('/')->with('toastr',['statut'=>'success','message'=>'Chanson uploadé']);;
     }
 
     public function recherche($s){
@@ -56,8 +81,6 @@ class MonControleur extends Controller
        return view("recherche",['utilisateurs'=>$users, 'chansons'=>$chansons]);
     }
 
-    public function testajax(){
-        return redirect('/recherche/ut');
-    }
+   
 
 }

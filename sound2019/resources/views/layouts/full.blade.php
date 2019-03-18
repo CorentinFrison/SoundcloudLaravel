@@ -54,6 +54,7 @@
 
 
 
+
 <main id="pjax-container">
     @yield('content')
 

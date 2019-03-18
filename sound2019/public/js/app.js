@@ -1,5 +1,14 @@
 
 $(document).ready(function(){
+
+
+
+    $(document).on('submit', 'form[data-pjax]', function(event) {
+        $.pjax.submit(event, '#pjax-container')
+      })
+
+
+
     $(document).pjax('[data-pjax] a, a[data-pjax]','#pjax-container');
     $(".chanson").click(function(e){
         e.preventDefault();
@@ -19,6 +28,15 @@ $(document).ready(function(){
         else
         window.location.href="/recherche/"+e.target.elements[0].value;
     });
+
+
+
+
+
+
+
+
+
 
 /*$('#search').submit(function(e){
     e.preventDefault();
