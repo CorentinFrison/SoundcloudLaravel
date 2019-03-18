@@ -1,0 +1,85 @@
+html {
+    position: relative;
+    min-height: 100%;
+    margin:0;
+}
+body {
+    /* Margin bottom by footer height */
+    margin:0;
+}
+audio {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #344955;
+}
+
+#grid{
+    display:grid;
+    height: 100vh;
+    grid-template-columns: 1fr 5fr;
+}
+
+#nav_bar{
+background-color:#232f34 ;
+    color:#fff
+}
+#nav_bar a{
+    color:#fff;
+    text-decoration: none;
+}
+#nav_bar a:hover{
+    background-color: #BE8F56;
+}
+main{
+    background-color: #4a6572;
+    color:#fff;
+}
+main a {
+    color:#fff;
+    text-decoration: none;
+}
+main a:hover{
+    background-color: #BE8F56;
+}
+
+li{
+    list-style-type: none;
+}
+#nav_bar form {
+display: flex;
+    justify-content: center;
+}
+.submit{
+    background-color: #BE8F56;
+    border:none;
+    border-radius: 5px;
+}
+h3, .follow{
+    display: flex;
+    justify-content: center;
+}
+#grid2{
+    margin-top:50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+}
+#main_page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:25%;
+    margin-right:50%;
+    margin-top:5%;
+}
+.main_chanson{
+    padding-top:2.5%;
+
+}
+.main_chanson a{
+    font-size: 25px;
+}
