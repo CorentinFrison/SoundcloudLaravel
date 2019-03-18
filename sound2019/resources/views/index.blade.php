@@ -6,10 +6,4 @@
    
    @endforeach
 
-
-   <a href='#' id='testajax'>Test ajax</a>
-   <div id="aremplir">
-   
-   </div>
-
 @endsection

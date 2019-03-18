@@ -18,7 +18,7 @@ class MonControleur extends Controller
     public function utilisateur($id){
         $utilisateur=User::find($id);
         if($utilisateur==false){
-            return abort(404);
+            return redirect("/")->with('toastr',['statut'=>'error','message'=>'Utilisateur inconnu']);
         }
         return view("utilisateur",["utilisateur"=>$utilisateur]);
     }
@@ -26,7 +26,7 @@ class MonControleur extends Controller
     public function suivre($id){
         $utilisateur = User::find($id);
         if($utilisateur == false){
-            return redirect("/")->with('toastr',['statut'=>'error','message'=>'Erreur']);;
+            return redirect("/")->with('toastr',['statut'=>'error','message'=>'Erreur']);
         }
         $utilisateur->ilsMeSuivent()->toggle(Auth::id());
         return back()->with('toastr',['statut'=>'success','message'=>'Changement de suivi']);
@@ -47,7 +47,7 @@ class MonControleur extends Controller
             $c->fichier=str_replace("public/","/storage/", $c->fichier);
             $c->save();
         }
-        return redirect("/");
+        return redirect("/")->with('toastr',['statut'=>'success','message'=>'Chanson uploadé']);;
     }
 
     public function recherche($s){

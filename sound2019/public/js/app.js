@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 
   
-
+/*
 $('#testajax').click(function(e){
     e.preventDefault();
     $.ajax({
@@ -41,7 +41,7 @@ $('#testajax').click(function(e){
         }
     });
 });
-
+*/
 
 
 toastr.options = {
