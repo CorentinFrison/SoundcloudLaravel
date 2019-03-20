@@ -14,8 +14,11 @@
 </head>
 <body>
     <div id="app">
+        <div id="grid">
+            <div id="nav_bar">
 <header>
     <a href="{{ url('/') }}" data-pjax>
+        {{asset('img/')}}
         {{ config('app.name', 'Laravel') }}
     </a>
 </header>
@@ -26,7 +29,7 @@
             <li><a href="{{ route('login') }}" data-pjax>Login</a></li>
             <li><a href="{{ route('register') }}" data-pjax>Register</a></li>
         @else
-            <li>Bonjour <a href="/utilisateur/{{ Auth::user()->id }}" data-pjax> {{ Auth::user()->name }}</a></li>
+            <li> <a href="/utilisateur/{{ Auth::user()->id }}" data-pjax> {{ Auth::user()->name }}</a></li>
             <li><a href="/nouvelle" data-pjax>Inserer une chanson</li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -41,10 +44,16 @@
 </nav>
 
 <form id="search" >
-<input type="text" name="searchbar" placeholder="Rechercher" required/>
-<input type="submit">
+<input type="text" name="searchbar" placeholder="Rechercher" required/><br/>
+<input type="submit" class="submit">
 </form>
+        </div>
+            <main id="pjax-container">
+                @yield('content')
 
+
+            </main>
+        </div>
 <audio id="audio" controls>
     <source src="">
 </audio>
@@ -55,11 +64,7 @@
 
 
 
-<main id="pjax-container">
-    @yield('content')
 
-
-</main>
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.js') }}"></script>
